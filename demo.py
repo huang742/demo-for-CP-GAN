@@ -26,7 +26,6 @@ from miscc.utils import weights_init, load_params, copy_G_params
 import torch.optim as optim
 from torch.autograd import Variable
 import torch.nn as nn
-import opts
 
 from model import RNN_ENCODER, CNN_ENCODER
 #from DIY_resmodel import G_DCGAN, G_NET
@@ -100,7 +99,6 @@ def load_G():
 
 
 if __name__ == "__main__":
-    opt = opts.parse_opt()
     captions = []
     cfg.DATA_DIR = '/home/user04/hzy/demo'
     save_dir = 'test_img'
@@ -112,7 +110,6 @@ if __name__ == "__main__":
     text_encoder = load_models(len(word_to_ix) + 1)
 
     netG = load_G()
-    batch_size = opt.batch_size
     criterion = nn.CrossEntropyLoss()
 
     nz = cfg.GAN.Z_DIM
